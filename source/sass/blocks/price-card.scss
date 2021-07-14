@@ -1,0 +1,83 @@
+.price-card {
+  width: 243px;
+  height: 315px;
+  padding: 14px;
+  margin: 0;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+
+  @media (min-width: $tablet-width) {
+    width: 210px;
+    cursor: pointer;
+    transition: 1s;
+
+
+    &:hover {
+
+      transform: scale(1.1, 1.1);
+    }
+  }
+  @media (min-width: $desktop-width) {
+    width: 243px;
+  }
+}
+
+.price-card_main {
+  height: 345px;
+  background-color: #ff7143;
+  box-shadow: 0px 4px 4px rgba(255, 112, 59, 0.317827);
+  color: white;
+  margin: 0 20px;
+}
+
+.price-card__title {
+  @extend %fontSansNormal;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.price-card__price {
+  b {
+    @extend %fontSansBold;
+    margin: 0;
+    font-size: 55px;
+    line-height: 45px;
+  }
+}
+
+.price-card__descr {
+  @extend %fontMulish;
+  font-size: 17px;
+  line-height: 35px;
+}
+
+.price-card__btn {
+  @extend %fontSansBold;
+  font-size: 17px;
+  line-height: 22px;
+  text-align: center;
+  min-width: 185px;
+  min-height: 45px;
+  color: #5454d4;
+  background-color: rgb(255, 255, 255);
+
+  &:hover {
+    background: linear-gradient(0deg, rgb(231, 229, 229) 0%, rgb(255, 255, 255) 100%);
+  }
+  &:active {
+    background: linear-gradient(0deg, rgb(209, 207, 207) 0%, rgb(255, 255, 255) 100%);
+  }
+}
+
+.price-card__btn_main {
+  color: white;
+  background-color: rgb(159, 57, 25);
+
+  &:hover {
+    background: linear-gradient(0deg, rgb(159, 57, 25) 0%, rgb(161, 81, 57) 100%);
+  }
+  &:active {
+    background: linear-gradient(0deg, rgb(116, 41, 18) 0%, rgb(161, 81, 57) 100%);
+  }
+}

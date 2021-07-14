@@ -1,0 +1,15 @@
+.button {
+  width: 111px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}

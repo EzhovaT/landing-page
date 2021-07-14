@@ -1,0 +1,48 @@
+.nav-list {
+  padding: 40px 0 0;
+
+  @media (min-width: $tablet-width) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 327px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.nav-list__item {
+  padding: 10px 0;
+  list-style: none;
+  border-bottom: 1px solid #5454d4;
+
+  @media (min-width: $tablet-width) {
+    border: none;
+    min-height: 43px;
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      background-color: #5454d4;
+      transition: all 1s linear;
+    }
+    &:hover {
+      &::after {
+        width: 100%;
+        height: 1px;
+      transition: all 0.5s linear;
+      }
+    }
+  }
+}
+
+.nav-list__link {
+  @extend %fontSansNormal;
+  font-size: 15px;
+  line-height: 20px;
+  text-decoration: none;
+  color: black;
+}

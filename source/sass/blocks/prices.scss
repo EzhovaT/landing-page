@@ -1,0 +1,26 @@
+.prices {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.prices__inner-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 45px 0;
+  width: 729px;
+  left: -225px;
+  transition: all ease 1s;
+
+  @media (min-width: $tablet-width) {
+    left: 0;
+    width: 100%;
+  }
+
+  @media (min-width: $desktop-width) {
+    justify-content: space-between;
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}

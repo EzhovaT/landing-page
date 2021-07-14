@@ -1,0 +1,42 @@
+.main-nav {
+  grid-column: 1/3;
+  grid-row: 2;
+  display: grid;
+  position: relative;
+  text-align: center;
+
+  @media (min-width: $tablet-width) {
+    grid-column: 2/3;
+    grid-row: 1;
+  }
+}
+
+.main-nav__btn {
+  position: absolute;
+  margin-top: 8px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  background-image: url("../img/icon-menu.svg");
+  transition: 0.2s;
+
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+}
+
+.main-nav__btn_open-menu {
+  background-image: url("../img/icon-cross.svg");
+}
+
+.main-nav_closed-menu {
+  .main-nav__list {
+    display: none;
+
+    @media (min-width: $tablet-width) {
+      display: flex;
+    }
+  }
+}

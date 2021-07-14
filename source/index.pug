@@ -1,0 +1,136 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Logoipsum
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Mulish&display=swap' rel='stylesheet')
+    link(rel="icon",type="image/png" sizes="32x32" href="img/favicon-32x32.png")
+    link(rel="icon",type="image/png" sizes="16x16" href="img/favicon-32x32.png")
+    link(rel='stylesheet', href='css/style.min.css')
+  body.page
+
+    mixin nav-link(name, href)
+      li.nav-list__item
+        a(class='nav-list__link', href= href)= name
+
+    mixin btnStart(className, text)
+      button(class='button ' + className, type='button')= text
+
+    mixin btnArrow(className)
+      button(class=`${className}__btn-prev ` + 'slider-btn ' + 'slider-btn_prev') &lt;
+      button(class= `${className}__btn-next ` + 'slider-btn ' + 'slider-btn_next') &gt;
+
+    mixin options-card(name, alt, title, text, website)
+      .options__card
+        img(class='options__img', src=`img/${ name }.png`, alt= alt, width='118', height='64')
+        p.options__title=title
+        p.options__subtitle=text
+
+    .page__wrapper
+      header.page-header
+        h1.visually-hidden Logoipsum
+        .main-logo
+          img.main-logo__img(src='img/logo.svg', alt='Логотип компании', width='199', height='39')
+
+        .page-header__btn-wrapper
+            +btnStart('page-header__button', 'Get Started')
+
+        nav.main-nav.main-nav_closed-menu
+          button.main-nav__btn(type='button')
+            span.visually-hidden Открыть меню
+          ul.main-nav__list.nav-list
+            +nav-link('Home', '#')
+            +nav-link('Features', '#')
+            +nav-link('Pricing', '#')
+            +nav-link('Blog', '#')
+
+      section.page-tagline
+        .tagline
+          .tagline__descr-wrapper
+            h2.tagline__title Grow your subscription business
+            p.tagline__description Outcome-centered products that reduce churn, optimize pricing, and grow your subscription business end-to-end.
+
+            .tagline__buttons
+              +btnStart('tagline__button', 'Get Started')
+              a(class='tagline__link-price', href='#footer') &darr;
+
+          .tagline__image-wrapper
+            img(class='tagline__img', src='img/hero1.png', alt='Main picture of the site', width='380', height='401')
+
+          .tagline-slider
+            .tagline-slider__inner-wrapper
+              -var n=0
+              while n<5
+                .tagline-slider__card
+                  img(class='tagline-slider__icon', src=`img/Group${ n++ }.svg`, alt='Company`s logo')
+
+            +btnArrow('tagline-slider')
+
+      main.page-content
+        .advantages
+          .advantages__box
+            .advantages__image-wrapper
+              img(class='advantages__img', src='img/image02.png', alt='illustration for the "Subscription Index" block', width='180', height='274')
+            .advantages__description
+              h3.advantages__title Subscription index
+              p.advantages__subtitle A daily dataset to keep you up to date on subscription market trends and what's happening in your vertical.
+              p.advantages__subtitle.visually-hidden A daily dataset to keep you up to date on subscription market trends and what's happening in your vertical.
+              a(class='advantages__link', href='#') Learn more
+
+          .advantages__box.advantages__box_position-reverse
+            .advantages__image-wrapper
+              img(class='advantages__img', src='img/image.png', alt='illustration for the "In-depth metrics" block', width='180', height='274')
+            .advantages__description
+              h3.advantages__title In-depth metrics
+              p.advantages__subtitle Accurate, real-time reporting at your fingertips. Getting data has never been easier.
+              p.advantages__subtitle.visually-hidden Accurate, real-time reporting at your fingertips. Getting data has never been easier.
+              a(class='advantages__link', href='#') Learn more
+
+
+        .options
+          .options__inner-wrapper
+            +options-card('icon1', 'icon for "Benchmarks"', 'Benchmarks', 'See how you stack up against comparable companies in similar stages.')
+            +options-card('icon2', 'icon for "Pricing Audit"', 'Pricing Audit', 'Benchmark the health of your monetization and pricing strategy.')
+            +options-card('icon3', 'icon for "Retention Audit"', 'Retention Audit', 'Audit where revenue leakage exists and where you can increase retention.')
+
+          +btnArrow('options')
+
+      footer.footer#footer
+          .footer__inner-wrapper
+            .product-plan
+              h2.product-plan__title Get the right plan for future product.
+              .product-plan__buttons
+                button.product-plan__btn-yearly Yearly
+                button.product-plan__btn-monthly Monthly
+
+            .prices
+              .prices__inner-wrapper
+                .price-card
+                  p.price-card__title Starter
+                  p.price-card__price <b>Free</b>
+                  p.price-card__descr 1 Website <br> 5 GB Hosting <br> Limited Support
+                  +btnStart('price-card__btn', 'Get Started')
+
+                .price-card.price-card_main
+                  p.price-card__title Premium
+                  p.price-card__price <b>$29</b>/month
+                  p.price-card__descr 10 Website <br> 15 GB Hosting <br> Premium Support
+                  +btnStart('price-card__btn price-card__btn_main', 'Get Started')
+
+                .price-card
+                  p.price-card__title Enterprise
+                  p.price-card__price <b>$49</b>/month
+                  p.price-card__descr Unlimited Website <br> 50 GB Hosting <br> Premium Support
+                  +btnStart('price-card__btn', 'Get Started')
+
+              +btnArrow('prices')
+
+            .footer-copyright
+              p.footer-copyright__name Author of the design layout - Flowbase (
+                a(class='footer-copyright__link', href='https://dribbble.com/flowbase', target="_blank") https://dribbble.com/flowbase
+                |)
+    script(src='js/script.min.js')

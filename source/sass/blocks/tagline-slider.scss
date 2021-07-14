@@ -1,0 +1,35 @@
+.tagline-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  @media (min-width: $tablet-width) {
+    grid-column: 1/3;
+  }
+}
+
+.tagline-slider__inner-wrapper {
+  position: relative;
+  width: 750px;
+  left: 0;
+  margin: 0 auto;
+  padding: 55px 0;
+  display: flex;
+  transition: all ease 1s;
+
+  @media (min-width: $desktop-width) {
+    justify-content: space-between;
+    width: 100%;
+    padding: 105px 0;
+  }
+}
+
+.tagline-slider__card {
+  width: 150px;
+  height: 48px;
+}
+
+.tagline-slider__icon {
+  display: block;
+  margin: 0 auto;
+}

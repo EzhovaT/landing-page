@@ -1,0 +1,52 @@
+.product-plan {
+  @media (min-width: $tablet-width) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.product-plan__title {
+  @extend %fontSansBold;
+  font-size: 38px;
+  line-height: 40px;
+  text-align: center;
+
+  @media (min-width: $tablet-width) {
+    text-align: left;
+    width: 380px;
+  }
+
+  @media (min-width: $desktop-width) {
+    font-size: 40px;
+    line-height: 47px;
+  }
+}
+
+.product-plan__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.product-plan__btn-yearly,
+.product-plan__btn-monthly {
+  @extend %fontSansBold;
+  font-size: 12px;
+  line-height: 21px;
+  min-width: 90px;
+  min-height: 40px;
+  border-radius: 10px;
+  border: 5px solid #f7f7fb;
+  cursor: pointer;
+}
+
+.product-plan__btn-monthly {
+  background-color: rgb(247, 247, 251);
+  border-radius: 0 10px 10px 0;
+}
+
+.product-plan__btn-yearly {
+  background-color: #5454d4;
+  color: white;
+  border-radius: 10px 0px 0px 10px;
+}

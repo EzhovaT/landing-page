@@ -1,0 +1,35 @@
+.page-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+  @media (min-width: $tablet-width) {
+    grid-template-columns: min-content 1fr min-content;
+    grid-gap: 10px;
+    align-items: center;
+    padding-bottom: 70px;
+  }
+}
+
+.page-header__btn-wrapper {
+  grid-column: 1/2;
+  grid-row: 2;
+  z-index: 1;
+
+  @media (min-width: $tablet-width) {
+    grid-column: 3/3;
+    grid-row: 1;
+  }
+}
+
+.page-header__button {
+  background-color: rgb(255, 113, 67);
+
+  &:hover {
+    background: linear-gradient(0deg, rgba(255,113,67,1) 0%, rgba(249,161,132,1) 100%);
+  }
+  &:active {
+    background: linear-gradient(0deg, rgb(219, 97, 56) 0%, rgba(249,161,132,1) 100%);
+  }
+}
+

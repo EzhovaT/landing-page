@@ -1,0 +1,18 @@
+.slider-btn {
+  position: absolute;
+  margin: 0 40px;
+  width: 40px;
+  height: 40px;
+  bottom: 0;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 50%;
+
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+}
+
+.slider-btn_next {
+  right: 0;
+}

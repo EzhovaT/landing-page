@@ -1,0 +1,17 @@
+.page {
+  @extend %fontMulish;
+  margin: 0;
+}
+
+.page__wrapper{
+  margin: 0 20px;
+
+  @media (min-width: $tablet-width) {
+    margin: 20px 40px 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin: 20px auto 0;
+    max-width: 1024px;
+  }
+}
