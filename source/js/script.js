@@ -1,10 +1,10 @@
 const mainNav = document.querySelector(".main-nav"),
-  taglineSliderWrapper = document.querySelector(".tagline-slider__inner-wrapper"),
-  taglineSlider = document.querySelector(".tagline-slider"),
-  optionsSlider = document.querySelector(".options"),
-  optionsSliderWrapper = document.querySelector(".options__inner-wrapper"),
-  pricesSlider = document.querySelector(".prices"),
-  pricesSliderWrappe = document.querySelector(".prices__inner-wrapper");
+  taglineSliderWrapper = document.querySelector(".tagline-slider__slider-tape"),
+  taglineSlider = document.querySelector(".tagline-slider__inner-wrapper"),
+  optionsSlider = document.querySelector(".options__inner-wrapper"),
+  optionsSliderWrapper = document.querySelector(".options__slider-tape"),
+  pricesSlider = document.querySelector(".prices__inner-wrapper"),
+  pricesSliderWrappe = document.querySelector(".prices__slider-tape");
 
 
 //open mobile menu
@@ -40,9 +40,9 @@ const prevSlide = (step, sliderTapeLength, sliderName) => {
 
 taglineSlider.addEventListener("click", (e) => {
   if (e.target.classList.contains("tagline-slider__btn-next")) {
-    nextSlide(150, 600, taglineSliderWrapper);
+    nextSlide(140, 600, taglineSliderWrapper);
   } else if (e.target.classList.contains("tagline-slider__btn-prev")) {
-    prevSlide(150, 600, taglineSliderWrapper);
+    prevSlide(140, 600, taglineSliderWrapper);
   }
 });
 
@@ -56,9 +56,9 @@ optionsSlider.addEventListener("click", (e) => {
 
 pricesSlider.addEventListener("click", (e) => {
   if (e.target.classList.contains("prices__btn-next")) {
-    nextSlide(243, 486, pricesSliderWrappe);
+    nextSlide(245, 510, pricesSliderWrappe);
   } else if (e.target.classList.contains("prices__btn-prev")) {
-    prevSlide(243, 486, pricesSliderWrappe);
+    prevSlide(245, 510, pricesSliderWrappe);
   }
 });
 

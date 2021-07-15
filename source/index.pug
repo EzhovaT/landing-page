@@ -63,12 +63,13 @@ html(lang='en')
 
           .tagline-slider
             .tagline-slider__inner-wrapper
-              -var n=0
-              while n<5
-                .tagline-slider__card
-                  img(class='tagline-slider__icon', src=`img/Group${ n++ }.svg`, alt='Company`s logo')
+              .tagline-slider__slider-tape
+                -var n=0
+                while n<5
+                  .tagline-slider__card
+                    img(class='tagline-slider__icon', src=`img/Group${ n++ }.svg`, alt='Company`s logo')
 
-            +btnArrow('tagline-slider')
+              +btnArrow('tagline-slider')
 
       main.page-content
         .advantages
@@ -93,11 +94,12 @@ html(lang='en')
 
         .options
           .options__inner-wrapper
-            +options-card('icon1', 'icon for "Benchmarks"', 'Benchmarks', 'See how you stack up against comparable companies in similar stages.')
-            +options-card('icon2', 'icon for "Pricing Audit"', 'Pricing Audit', 'Benchmark the health of your monetization and pricing strategy.')
-            +options-card('icon3', 'icon for "Retention Audit"', 'Retention Audit', 'Audit where revenue leakage exists and where you can increase retention.')
+            .options__slider-tape
+              +options-card('icon1', 'icon for "Benchmarks"', 'Benchmarks', 'See how you stack up against comparable companies in similar stages.')
+              +options-card('icon2', 'icon for "Pricing Audit"', 'Pricing Audit', 'Benchmark the health of your monetization and pricing strategy.')
+              +options-card('icon3', 'icon for "Retention Audit"', 'Retention Audit', 'Audit where revenue leakage exists and where you can increase retention.')
 
-          +btnArrow('options')
+            +btnArrow('options')
 
       footer.footer#footer
           .footer__inner-wrapper
@@ -109,25 +111,26 @@ html(lang='en')
 
             .prices
               .prices__inner-wrapper
-                .price-card
-                  p.price-card__title Starter
-                  p.price-card__price <b>Free</b>
-                  p.price-card__descr 1 Website <br> 5 GB Hosting <br> Limited Support
-                  +btnStart('price-card__btn', 'Get Started')
+                .prices__slider-tape
+                  .price-card
+                    p.price-card__title Starter
+                    p.price-card__price <b>Free</b>
+                    p.price-card__descr 1 Website <br> 5 GB Hosting <br> Limited Support
+                    +btnStart('price-card__btn', 'Get Started')
 
-                .price-card.price-card_main
-                  p.price-card__title Premium
-                  p.price-card__price <b>$29</b>/month
-                  p.price-card__descr 10 Website <br> 15 GB Hosting <br> Premium Support
-                  +btnStart('price-card__btn price-card__btn_main', 'Get Started')
+                  .price-card.price-card_main
+                    p.price-card__title Premium
+                    p.price-card__price <b>$29</b>/month
+                    p.price-card__descr 10 Website <br> 15 GB Hosting <br> Premium Support
+                    +btnStart('price-card__btn price-card__btn_main', 'Get Started')
 
-                .price-card
-                  p.price-card__title Enterprise
-                  p.price-card__price <b>$49</b>/month
-                  p.price-card__descr Unlimited Website <br> 50 GB Hosting <br> Premium Support
-                  +btnStart('price-card__btn', 'Get Started')
+                  .price-card
+                    p.price-card__title Enterprise
+                    p.price-card__price <b>$49</b>/month
+                    p.price-card__descr Unlimited Website <br> 50 GB Hosting <br> Premium Support
+                    +btnStart('price-card__btn', 'Get Started')
 
-              +btnArrow('prices')
+                +btnArrow('prices')
 
             .footer-copyright
               p.footer-copyright__name Author of the design layout - Flowbase (

@@ -1,32 +1,46 @@
 .tagline-slider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-
   @media (min-width: $tablet-width) {
     grid-column: 1/3;
+    width: 100%;
   }
 }
 
 .tagline-slider__inner-wrapper {
   position: relative;
-  width: 750px;
+  width: 280px;
+  overflow: hidden;
+  margin: 0 auto;
+  @media (min-width: $tablet-width) {
+    width: 100%;
+  }
+}
+
+.tagline-slider__slider-tape {
+  position: relative;
+  width: 840px;
   left: 0;
   margin: 0 auto;
   padding: 55px 0;
   display: flex;
   transition: all ease 1s;
 
+  @media (min-width: $tablet-width) {
+    width: 100%;
+  }
+
   @media (min-width: $desktop-width) {
     justify-content: space-between;
-    width: 100%;
     padding: 105px 0;
   }
 }
 
 .tagline-slider__card {
-  width: 150px;
+  width: 140px;
   height: 48px;
+
+  @media (min-width: $tablet-width) {
+    width: 150px;
+  }
 }
 
 .tagline-slider__icon {

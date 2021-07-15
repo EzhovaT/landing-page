@@ -1,6 +1,10 @@
 .footer-copyright {
   width: 100%;
   text-align: center;
+  padding-top: 30px;
+  @extend %fontMulish;
+
+
 }
 
 .footer-copyright__name {
