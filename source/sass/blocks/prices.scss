@@ -9,7 +9,6 @@
   }
 }
 
-
 .prices__slider-tape {
   position: relative;
   display: flex;
@@ -22,6 +21,7 @@
   @media (min-width: $tablet-width) {
     left: 0;
     width: 100%;
+    justify-content: center;
   }
 
   @media (min-width: $desktop-width) {
