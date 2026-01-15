@@ -1,11 +1,13 @@
+@use "../global/breakpoints";
+
 .page-content {
   padding-top: 70px;
   width: 100%;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     padding-top: 50px;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
   }
 }

@@ -1,16 +1,24 @@
+@use "../global/breakpoints";
+
+.lock {
+  overflow: hidden;
+}
+
 .page {
   @extend %fontMulish;
   margin: 0;
 }
 
 .page__wrapper{
+  position: relative;
+  overflow: hidden;
   margin: 0 20px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     margin: 20px 40px 0;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     margin: 20px auto 0;
     max-width: 1024px;
   }

@@ -1,5 +1,7 @@
+@use "../global/breakpoints";
+
 .tagline-slider {
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     grid-column: 1/3;
     width: 100%;
   }
@@ -10,7 +12,7 @@
   width: 280px;
   overflow: hidden;
   margin: 0 auto;
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 100%;
   }
 }
@@ -24,11 +26,11 @@
   display: flex;
   transition: all ease 1s;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 100%;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     justify-content: space-between;
     padding: 105px 0;
   }
@@ -38,7 +40,7 @@
   width: 140px;
   height: 48px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 150px;
   }
 }

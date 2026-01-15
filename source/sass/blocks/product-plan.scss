@@ -1,5 +1,7 @@
+@use "../global/breakpoints";
+
 .product-plan {
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,12 +14,12 @@
   line-height: 40px;
   text-align: center;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     text-align: left;
     width: 380px;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     font-size: 40px;
     line-height: 47px;
   }
@@ -26,27 +28,42 @@
 .product-plan__buttons {
   display: flex;
   justify-content: center;
+  min-width: 90px;
+  min-height: 40px;
 }
 
-.product-plan__btn-yearly,
-.product-plan__btn-monthly {
+.product-plan__switch {
   @extend %fontSansBold;
   font-size: 12px;
   line-height: 21px;
-  min-width: 90px;
-  min-height: 40px;
   border-radius: 10px;
   border: 5px solid #f7f7fb;
+  background-color: #f7f7fb;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.product-plan__item input[type="radio"] {
+  display: none;
+}
+
+.product-plan__item  .product-plan__label {
+  padding: 5px 17px;
+  color: #000000;
   cursor: pointer;
+  user-select: none;
 }
 
-.product-plan__btn-monthly {
-  background-color: rgb(247, 247, 251);
-  border-radius: 0 10px 10px 0;
-}
-
-.product-plan__btn-yearly {
+.product-plan__item input[type="radio"]:checked + .product-plan__label {
   background-color: #5454d4;
-  color: white;
-  border-radius: 10px 0px 0px 10px;
+  color: #fff;
+}
+
+.product-plan__item.yearly input[type="radio"]:checked + .product-plan__label {
+  border-radius: 5px 0 0 5px;
+}
+
+.product-plan__item.monthly input[type="radio"]:checked + .product-plan__label {
+  border-radius: 0 5px 5px 0;
 }

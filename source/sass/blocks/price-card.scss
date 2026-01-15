@@ -1,3 +1,5 @@
+@use "../global/breakpoints";
+
 .price-card {
   width: 243px;
   height: 315px;
@@ -7,7 +9,7 @@
   background-color: #f8f8f8;
   border-radius: 10px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 210px;
     cursor: pointer;
     transition: 1s;
@@ -18,7 +20,7 @@
       transform: scale(1.1, 1.1);
     }
   }
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     width: 243px;
   }
 }

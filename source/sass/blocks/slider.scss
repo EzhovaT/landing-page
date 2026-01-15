@@ -1,3 +1,5 @@
+@use "../global/breakpoints";
+
 .slider-btn {
   position: absolute;
   margin: 0 40px;
@@ -8,7 +10,7 @@
   border: 1px solid black;
   border-radius: 50%;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     display: none;
   }
 }
