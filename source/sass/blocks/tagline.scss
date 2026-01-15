@@ -1,8 +1,10 @@
+@use "../global/breakpoints";
+
 .tagline {
   display: flex;
   flex-direction: column;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: flex-start;
@@ -10,7 +12,7 @@
 }
 
 .tagline__descr-wrapper {
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     width: 436px;
   }
 }
@@ -22,7 +24,7 @@
   line-height: 45px;
   letter-spacing: -2.5px;
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     font-size: 60px;
     line-height: 60px;
   }
@@ -34,11 +36,11 @@
   line-height: 20px;
   margin: 25px 0;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     margin: 25px 0;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     font-size: 20px;
     line-height: 30px;
   }
@@ -83,7 +85,7 @@
   border: 1px solid black;
   animation: 2s linear infinite arrowRotation;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     margin: 0 40px;
 
     &:hover {
@@ -100,12 +102,12 @@
 .tagline__image-wrapper {
   display: none;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     display: block;
     width: 380px;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     width: 588px;
     height: 550px;
   }

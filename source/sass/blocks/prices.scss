@@ -1,10 +1,12 @@
+@use "../global/breakpoints";
+
 .prices__inner-wrapper {
   position: relative;
   width: 280px;
   overflow: hidden;
   margin: 0 auto;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 100%;
   }
 }
@@ -18,13 +20,13 @@
   left: -245px;
   transition: all ease 1s;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     left: 0;
     width: 100%;
     justify-content: center;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     justify-content: space-between;
     max-width: 768px;
     margin: 0 auto;

@@ -1,0 +1,10 @@
+.popup(id="popup-call")
+  .popup__window
+   .popup__inner
+    button.popup__close-btn(type='button') 	&#215;
+
+    form.popup__form.popup__content-wrapper(id="popup__form" method="POST" enctype="text/plain")
+      fieldset.popup__content
+        input.popup__input(type="text" name="user_name" placeholder="Your name" minlength="5" maxlength="20"  required)
+        input.popup__input(type="email" name="user_email" placeholder="Your email" max="17" min="5" required)
+        button.button.button_bright(type="submit" name="submit") Contact me

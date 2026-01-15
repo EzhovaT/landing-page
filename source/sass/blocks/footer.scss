@@ -1,5 +1,7 @@
+@use "../global/breakpoints";
+
 .footer__inner-wrapper {
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     padding: 40px 0;
   }
 }

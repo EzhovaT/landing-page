@@ -1,3 +1,5 @@
+@use "../global/breakpoints";
+
 .options__inner-wrapper {
   position: relative;
   overflow: hidden;
@@ -5,7 +7,7 @@
   padding-bottom: 40px;
   margin: 0 auto;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 100%;
   }
 }
@@ -19,7 +21,7 @@
   display: flex;
   width: 840px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     justify-content: space-around;
     width: 100%;
     padding-top: 108px;
@@ -30,7 +32,7 @@
   text-align: center;
   width: 280px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 210px;
   }
 }
@@ -41,7 +43,7 @@
   line-height: 36px;
   margin-bottom: 0px;
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     font-size: 24px;
   }
 }
@@ -50,7 +52,7 @@
   @extend %fontMulish;
   font-size: 12px;
   line-height: 20px;
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     font-size: 16px;
     line-height: 24px;
   }

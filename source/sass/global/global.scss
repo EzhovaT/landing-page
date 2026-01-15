@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+svg:not(:root) {
+  overflow: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

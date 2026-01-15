@@ -8,8 +8,22 @@
   &:hover {
     cursor: pointer;
   }
+
   &:active {
     position: relative;
     top: 1px;
+  }
+
+  &_bright {
+    background-color: rgb(255, 113, 67);
+    display: block;
+
+    &:hover {
+      background: linear-gradient(0deg, rgba(255,113,67,1) 0%, rgba(249,161,132,1) 100%);
+    }
+
+    &:active {
+      background: linear-gradient(0deg, rgb(219, 97, 56) 0%, rgba(249,161,132,1) 100%);
+    }
   }
 }

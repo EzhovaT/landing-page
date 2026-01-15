@@ -4,6 +4,7 @@ html(lang='en')
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv="refresh" content="url=http://www.example.com/")
     title Logoipsum
     link(rel='preconnect' href='https://fonts.googleapis.com')
     link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
@@ -13,12 +14,13 @@ html(lang='en')
     link(rel='stylesheet', href='css/style.min.css')
   body.page
 
-    mixin nav-link(name, href)
-      li.nav-list__item
-        a(class='nav-list__link', href= href)= name
+    - var productPlan = 'Yearly';
+    mixin nav-link(name, href, active)
+        li.nav-list__item(class = active ? 'nav-list__item-active' : '')
+          a(class='nav-list__link', href= href)= name
 
     mixin btnStart(className, text)
-      button(class='button ' + className, type='button')= text
+      button(class='button btn-start ' + className, type='button')= text
 
     mixin btnArrow(className)
       button(class=`${className}__btn-prev ` + 'slider-btn ' + 'slider-btn_prev') &lt;
@@ -37,16 +39,16 @@ html(lang='en')
           img.main-logo__img(src='img/logo.svg', alt='Логотип компании', width='199', height='39')
 
         .page-header__btn-wrapper
-            +btnStart('page-header__button', 'Get Started')
+          +btnStart('button_bright', 'Get Started')
 
         nav.main-nav.main-nav_closed-menu
           button.main-nav__btn(type='button')
             span.visually-hidden Открыть меню
           ul.main-nav__list.nav-list
-            +nav-link('Home', '#')
-            +nav-link('Features', '#')
-            +nav-link('Pricing', '#')
-            +nav-link('Blog', '#')
+            +nav-link('Home', '/', '-active')
+            +nav-link('Features', '/features')
+            +nav-link('Pricing', '/pricing')
+            +nav-link('Blog', '/blog')
 
       section.page-tagline
         .tagline
@@ -102,38 +104,47 @@ html(lang='en')
             +btnArrow('options')
 
       footer.footer#footer
-          .footer__inner-wrapper
-            .product-plan
-              h2.product-plan__title Get the right plan for future product.
-              .product-plan__buttons
-                button.product-plan__btn-yearly Yearly
-                button.product-plan__btn-monthly Monthly
+        .footer__inner-wrapper
+          .product-plan
+            h2.product-plan__title Get the right plan for future product.
+            .product-plan__buttons
+              .product-plan__switch
+                .product-plan__item.yearly
+                  input(type='radio' id='Yearly' name='productPlan' checked)
+                  label.product-plan__label(for='Yearly') Yearly
+                .product-plan__item.monthly
+                  input(type='radio' id='Monthly' name='productPlan')
+                  label.product-plan__label(for='Monthly') Monthly
 
-            .prices
-              .prices__inner-wrapper
-                .prices__slider-tape
-                  .price-card
-                    p.price-card__title Starter
-                    p.price-card__price <b>Free</b>
-                    p.price-card__descr 1 Website <br> 5 GB Hosting <br> Limited Support
-                    +btnStart('price-card__btn', 'Get Started')
+          .prices
+            .prices__inner-wrapper
+              .prices__slider-tape
+                .price-card
+                  p.price-card__title Starter
+                  p.price-card__price <b>Free</b>
+                  p.price-card__descr 1 Website <br> 5 GB Hosting <br> Limited Support
+                  +btnStart('price-card__btn', 'Get Started')
 
-                  .price-card.price-card_main
-                    p.price-card__title Premium
-                    p.price-card__price <b>$29</b>/month
-                    p.price-card__descr 10 Website <br> 15 GB Hosting <br> Premium Support
-                    +btnStart('price-card__btn price-card__btn_main', 'Get Started')
+                .price-card.price-card_main
+                  p.price-card__title Premium
+                  p.price-card__price <b>$29</b>/month
+                  p.price-card__descr 10 Website <br> 15 GB Hosting <br> Premium Support
+                  +btnStart('price-card__btn price-card__btn_main', 'Get Started')
 
-                  .price-card
-                    p.price-card__title Enterprise
-                    p.price-card__price <b>$49</b>/month
-                    p.price-card__descr Unlimited Website <br> 50 GB Hosting <br> Premium Support
-                    +btnStart('price-card__btn', 'Get Started')
+                .price-card
+                  p.price-card__title Enterprise
+                  p.price-card__price <b>$49</b>/month
+                  p.price-card__descr Unlimited Website <br> 50 GB Hosting <br> Premium Support
+                  +btnStart('price-card__btn', 'Get Started')
 
-                +btnArrow('prices')
+              +btnArrow('prices')
 
-            .footer-copyright
-              p.footer-copyright__name Author of the design layout - Flowbase (
-                a(class='footer-copyright__link', href='https://dribbble.com/flowbase', target="_blank") https://dribbble.com/flowbase
-                |)
+          .footer-copyright
+            p.footer-copyright__name Author of the design layout - Flowbase (
+              a(class='footer-copyright__link', href='https://dribbble.com/flowbase', target="_blank") https://dribbble.com/flowbase
+              |)
+
+      include ./popup.pug
+      include ./popup-success.pug
+
     script(src='js/script.min.js')

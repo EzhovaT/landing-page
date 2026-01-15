@@ -1,7 +1,9 @@
+@use "../global/breakpoints";
+
 .advantages__box {
   width: 100%;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,7 +13,7 @@
 .advantages__box_position-reverse {
   margin-top: 45px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     flex-direction: row-reverse;
     margin-top: 83px;
   }
@@ -21,11 +23,11 @@
   width: 210px;
   margin: 0 auto;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     margin: 0;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     width: 615px;
     height: 473px;
   }
@@ -39,11 +41,11 @@
 }
 
 .advantages__description {
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     width: 370px;
   }
 
-  @media (min-width: $desktop-width) {
+  @media (min-width: breakpoints.$desktop-width) {
     width: 409px;
   }
 }
@@ -55,7 +57,7 @@
   text-align: center;
   margin: 10px 0;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     text-align: left;
   }
 }
@@ -65,7 +67,7 @@
   font-size: 15px;
   line-height: 25px;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     font-size: 20px;
     line-height: 30px;
   }

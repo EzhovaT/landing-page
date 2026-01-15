@@ -1,179 +1,118 @@
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");
-const sourcemap = require("gulp-sourcemaps");
-const sass = require("gulp-sass");
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const csso = require("postcss-csso");
-const rename = require("gulp-rename");
-const htmlmin = require("gulp-htmlmin");
-const terser = require("gulp-terser");
-const imagemin = require("gulp-imagemin");
-const webp = require("gulp-webp");
-const svgstore = require("gulp-svgstore");
-const del = require("del");
-const sync = require("browser-sync").create();
-// const pug = require('pug');
+import gulp from 'gulp';
+import pug from  'gulp-pug';
+const { src, dest, watch, series } = gulp;
+import plumber from  "gulp-plumber";
+import sourcemap from  "gulp-sourcemaps";
+import postcss from  "gulp-postcss";
+import autoprefixer from  "autoprefixer";
+import csso from  "postcss-csso";
+import rename from  "gulp-rename";
+import htmlmin from  "gulp-htmlmin";
+import terser from  "gulp-terser";
+import imagemin, { mozjpeg, optipng, svgo } from 'gulp-imagemin';
+import del from  "del";
+import syncServer from 'browser-sync';
+const sync = syncServer.create();
+import * as dartSass from 'sass'
+import  gulpSass  from  'gulp-sass' ;
+const  sass  =  gulpSass ( dartSass );
 
-// const { src, dest } = require('gulp');
-const pugG = require('gulp-pug');
-
-const pug = () => {
-    return gulp.src('source/*.pug')
-        .pipe(
-            pugG({
-                // Your options in here.
-            })
-        )
-        .pipe(gulp.dest('build'));
+function pugTask(done) {
+ return src('source/*.pug')
+  .pipe(pug())
+  .pipe(dest('build')),
+  done();
 };
-
-exports.pug = pug;
-
 
 // Styles
 
-const styles = () => {
-    return gulp
-        .src("source/sass/style.scss")
-        .pipe(plumber())
-        .pipe(sourcemap.init())
-        .pipe(sass())
-        .pipe(postcss([autoprefixer(), csso()]))
-        .pipe(sourcemap.write("."))
-        .pipe(rename("style.min.css"))
-        .pipe(gulp.dest("build/css"))
-        .pipe(sync.stream());
-};
-
-exports.styles = styles;
+function styles(done) {
+  return src('source/sass/style.scss')
+    .pipe(plumber())
+    .pipe(sourcemap.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([autoprefixer(), csso()]))
+    .pipe(sourcemap.write("."))
+    .pipe(rename("style.min.css"))
+    .pipe(dest("build/css")),
+    done();
+}
 
 // HTML
 
-const html = () => {
-    return gulp
-        .src("source/*.html")
-        .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest("build"));
-};
-
-exports.html = html;
+function html(done) {
+  return src('source/*.html')
+    .pipe(
+      htmlmin({ collapseWhitespace: true }),
+    )
+    .pipe(dest('build')),
+    done();
+}
 
 // Scripts
 
-const scripts = () => {
-    return gulp.src("source/js/script.js")
-        .pipe(terser())
-        .pipe(rename("script.min.js"))
-        .pipe(gulp.dest("build/js"))
-        .pipe(sync.stream());
+function scripts(done) {
+  return src('source/js/script.js')
+    .pipe(terser())
+    .pipe(rename("script.min.js"))
+    .pipe(dest("build/js")),
+    done();
 }
-
-exports.scripts = scripts;
 
 // Images
 
-const optimizeImages = () => {
-    return gulp.src("source/img/**/*.{png,jpg,svg}")
-        .pipe(imagemin([
-            imagemin.mozjpeg({ progressive: true }),
-            imagemin.optipng({ optimizationLevel: 3 }),
-            imagemin.svgo()
-        ]))
-        .pipe(gulp.dest("build/img"))
+function optimizeImages(done) {
+  return src('source/img/**/*.{png,jpg,svg}')
+    .pipe(imagemin([
+    mozjpeg({ progressive: true}),
+    optipng({optimizationLevel: 3}),
+    svgo()
+  ]))
+    .pipe(dest("build/img")),
+    done();
 }
 
-exports.images = optimizeImages;
-
-const copyImages = () => {
-    return gulp.src("source/img/**/*.{png,jpg,svg}")
-        .pipe(gulp.dest("build/img"))
+function copyImages(done) {
+  return src("source/img/**/*.{png,jpg,svg}")
+    .pipe(dest("build/img")),
+    done();
 }
-
-exports.images = copyImages;
 
 // Copy
 
-const copy = (done) => {
-    gulp.src([
-            "source/fonts/*.{woff2,woff}",
-            "source/*.ico",
-            "source/img/**/*.svg",
-            "!source/img/icons/*.svg",
-        ], {
-            base: "source"
-        })
-        .pipe(gulp.dest("build"))
-    done();
+function copy(done) {
+  return src([
+    "source/*.ico",
+    "source/img/**/*.svg",
+    "!source/img/icons/*.svg",
+  ], {
+    base: "source"
+  })
+  .pipe(dest("build")),
+  done();
 }
-
-exports.copy = copy;
 
 // Clean
 
-const clean = () => {
-    return del("build");
-};
+function clean() {
+  return del("build");
+}
 
 // Server
 
-const server = (done) => {
-    sync.init({
-        server: {
-            baseDir: "build"
-        },
-        cors: true,
-        notify: false,
-        ui: false,
-    });
-    done();
+function server(done) {
+  sync.init({
+    server: "./build",
+    cors: true,
+    notify: false,
+    ui: false, });
+
+  watch(['source/*.html'], series(html)).on('change', sync.reload);
+  watch(['source/sass/**/*.scss'], series(styles)).on('change', sync.reload);
+  watch('source/js/script.js', series(scripts)).on('change', sync.reload);
 }
 
-exports.server = server;
+const build = series([clean, copy, optimizeImages, styles, html, pugTask, scripts]);
+const dev = series([clean, copy, copyImages, styles, html, pugTask, scripts, server]);
 
-// Watcher
-
-const watcher = () => {
-    gulp.watch("source/sass/**/*.scss", gulp.series(styles));
-    gulp.watch("source/js/script.js", gulp.series(scripts));
-    gulp.watch("source/*.html", gulp.series(html, reload));
-    gulp.watch("source/*.pug", gulp.series(pug, reload))
-}
-
-// Reload
-const reload = (done) => {
-    sync.reload();
-    done();
-}
-
-// Build
-
-const build = gulp.series(
-    clean,
-    copy,
-    optimizeImages,
-    gulp.parallel(
-        styles,
-        html,
-        pug,
-        scripts
-    ),
-);
-
-exports.build = build;
-
-// Default
-
-exports.default = gulp.series(
-    clean,
-    copy,
-    copyImages,
-    gulp.parallel(
-        styles,
-        pug,
-        scripts
-    ),
-    gulp.series(
-        server,
-        watcher
-    ));
+export { build, dev };

@@ -1,8 +1,10 @@
+@use "../global/breakpoints";
+
 .main-logo {
   width: 100%;
   grid-column: 1/3;
 
-  @media (min-width: $tablet-width) {
+  @media (min-width: breakpoints.$tablet-width) {
     grid-column: 1/1;
   }
 }
